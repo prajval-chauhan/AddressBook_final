@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace AddressBook_final
@@ -17,6 +18,7 @@ namespace AddressBook_final
 
         public void AddContact()
         {
+            Console.Clear();
             AddressBook contact = new AddressBook();
             Console.WriteLine("Enter the first name of the person: ");
             contact.firstName = Console.ReadLine();
@@ -32,12 +34,40 @@ namespace AddressBook_final
             contact.zipCode = Console.ReadLine();
             Console.WriteLine("Enter the state: ");
             contact.state = Console.ReadLine();
-
+            Console.Clear();
             Records.Add(contact);
+        }
+        public void DisplayContact(AddressBook contact)
+        {
+            Console.WriteLine("First Name : " + contact.firstName);
+            Console.WriteLine("Last Name : " + contact.lastName);
+            Console.WriteLine("Mobile  Number : " + contact.MobileNumber);
+            Console.WriteLine("Email : " + contact.eMail);
+            Console.WriteLine("Address : " + contact.address);
+            Console.WriteLine("ZIP Code: " + contact.zipCode);
+            Console.WriteLine("state : " + contact.state);
+            Console.WriteLine("***************");
+        }
+
+        public void DisplayRecords()
+        {
+            Console.Clear();
+            if (Records.Count == 0)
+            {
+                Console.WriteLine("The address book has no entries");
+            }
+            else
+            {
+                Console.WriteLine("***Your Contacts***\n\n***************");
+                foreach(var contact in Records)
+                {
+                    DisplayContact(contact);
+                }
+            }
+            Console.ReadKey();
+            Console.Clear();
         }
 
 
-
-        
     }
 }
