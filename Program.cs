@@ -10,7 +10,7 @@ namespace AddressBook_final
             AddressBook call = new AddressBook();
             for (; ; )
             {
-                Console.WriteLine("Enter 1 to Add Contact\nEnter 2 to display contacts\nEnter 3 to search/edit\nEnter 4 to exit\n");
+                Console.WriteLine("Enter 1 to Add Contact\nEnter 2 to display contacts\nEnter 3 to search/edit/delete\nEnter 4 to exit\n");
                 int userInput = Convert.ToInt32(Console.ReadLine());
                 switch (userInput)
                 {
@@ -21,6 +21,7 @@ namespace AddressBook_final
                         call.DisplayRecords();
                         break;
                     case 3:
+                        Console.Clear();
                         Console.WriteLine("******SEARCH******\nEnter the first name of the contact");
                         string input = Console.ReadLine();
                         call.SearchByName(input);

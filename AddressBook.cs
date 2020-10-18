@@ -7,7 +7,13 @@ namespace AddressBook_final
 {
     class AddressBook
     {
+        /// <summary>
+        /// A list with the name 'Records' is created with the objectie to store the objects of AddressBook type
+        /// </summary>
         public static List<AddressBook> Records = new List<AddressBook>();
+        /// <summary>
+        /// Below are the fields that the Address Book will have 
+        /// </summary>
         public string firstName;
         public string lastName;
         public string MobileNumber;
@@ -16,6 +22,9 @@ namespace AddressBook_final
         public string zipCode;
         public string state;
 
+        /// <summary>
+        /// Method to add the contact Entry
+        /// </summary>
         public void AddContact()
         {
             Console.Clear();
@@ -37,6 +46,10 @@ namespace AddressBook_final
             Console.Clear();
             Records.Add(contact);
         }
+        /// <summary>
+        /// Method to display the Contacts or single entry
+        /// </summary>
+        /// <param name="contact">The contact.</param>
         public void DisplayContact(AddressBook contact)
         {
             Console.WriteLine("First Name : " + contact.firstName);
@@ -48,7 +61,9 @@ namespace AddressBook_final
             Console.WriteLine("state : " + contact.state);
             Console.WriteLine("***************");
         }
-
+        /// <summary>
+        /// Method to display all the contacts present in the list named Records 
+        /// </summary>
         public void DisplayRecords()
         {
             Console.Clear();
@@ -67,6 +82,10 @@ namespace AddressBook_final
             Console.ReadKey();
             Console.Clear();
         }
+        /// <summary>
+        /// Method to search the contact using first name which further gives option  to either edit or delete the matched entry
+        /// </summary>
+        /// <param name="name">The name.</param>
         public void SearchByName(string name)
         {
             bool FLAG = false;
