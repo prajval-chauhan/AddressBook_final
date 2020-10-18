@@ -69,10 +69,13 @@ namespace AddressBook_final
         }
         public void SearchByName(string name)
         {
+            bool FLAG = false;
             Console.Clear();
             if (Records.Count == 0)
             {
                 Console.WriteLine("The address book has no entries");
+                Console.ReadKey();
+                Console.Clear();
             }
             else
             {
@@ -80,30 +83,47 @@ namespace AddressBook_final
                 {
                     if ((Records[i].firstName).Equals(name))
                     {
+                        FLAG = true;
                         Console.Clear();
                         DisplayContact(Records[i]);
-                        Console.WriteLine("Edit Contact : y/n");
-                        char input = Convert.ToChar(Console.ReadLine());
-                        if (input == 'y')
+                        Console.WriteLine("Enter 1 to edit contact\nEnter 2 to delete the contact\nEnter 3 to continue searching\nEnter 4 to stop search");
+                        int input = Convert.ToInt32(Console.ReadLine());
+                        switch (input)
                         {
-                            Console.Clear();
-                            Console.WriteLine("Enter the first name of the person: ");
-                            Records[i].firstName = Console.ReadLine();
-                            Console.WriteLine("Enter the last name of the person: ");
-                            Records[i].lastName = Console.ReadLine();
-                            Console.WriteLine("Enter the mobile number of the person: ");
-                            Records[i].MobileNumber = Console.ReadLine();
-                            Console.WriteLine("Enter the email ID of the person: ");
-                            Records[i].eMail = Console.ReadLine();
-                            Console.WriteLine("Enter the address of the person");
-                            Records[i].address = Console.ReadLine();
-                            Console.WriteLine("Enter the ZIP code: ");
-                            Records[i].zipCode = Console.ReadLine();
-                            Console.WriteLine("Enter the state: ");
-                            Records[i].state = Console.ReadLine();
-                            Console.Clear();
+                            case 1:
+                                Console.Clear();
+                                Console.WriteLine("Enter the first name of the person: ");
+                                Records[i].firstName = Console.ReadLine();
+                                Console.WriteLine("Enter the last name of the person: ");
+                                Records[i].lastName = Console.ReadLine();
+                                Console.WriteLine("Enter the mobile number of the person: ");
+                                Records[i].MobileNumber = Console.ReadLine();
+                                Console.WriteLine("Enter the email ID of the person: ");
+                                Records[i].eMail = Console.ReadLine();
+                                Console.WriteLine("Enter the address of the person");
+                                Records[i].address = Console.ReadLine();
+                                Console.WriteLine("Enter the ZIP code: ");
+                                Records[i].zipCode = Console.ReadLine();
+                                Console.WriteLine("Enter the state: ");
+                                Records[i].state = Console.ReadLine();
+                                Console.Clear();
+                                break;
+                            case 2:
+                                Records.RemoveAt(i);
+                                Console.Clear();
+                                break;
+                            case 3:
+                                continue;
+                            case 4:
+                                break;
                         }
                     }
+                }
+                if(FLAG == false)
+                {
+                    Console.WriteLine("No such entry found");
+                    Console.ReadKey();
+                    Console.Clear();
                 }
             }
         }
