@@ -8,13 +8,13 @@ namespace AddressBook_final
     class AddressBook
     {
         public static List<AddressBook> Records = new List<AddressBook>();
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string MobileNumber { get; set; }
-        public string eMail { get; set; }
-        public string address { get; set; }
-        public string zipCode { get; set; }
-        public string state { get; set; }
+        public string firstName;
+        public string lastName;
+        public string MobileNumber;
+        public string eMail;
+        public string address;
+        public string zipCode;
+        public string state;
 
         public void AddContact()
         {
@@ -67,7 +67,45 @@ namespace AddressBook_final
             Console.ReadKey();
             Console.Clear();
         }
-
-
+        public void SearchByName(string name)
+        {
+            Console.Clear();
+            if (Records.Count == 0)
+            {
+                Console.WriteLine("The address book has no entries");
+            }
+            else
+            {
+                for (int i = 0; i < Records.Count; i++)
+                {
+                    if ((Records[i].firstName).Equals(name))
+                    {
+                        Console.Clear();
+                        DisplayContact(Records[i]);
+                        Console.WriteLine("Edit Contact : y/n");
+                        char input = Convert.ToChar(Console.ReadLine());
+                        if (input == 'y')
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Enter the first name of the person: ");
+                            Records[i].firstName = Console.ReadLine();
+                            Console.WriteLine("Enter the last name of the person: ");
+                            Records[i].lastName = Console.ReadLine();
+                            Console.WriteLine("Enter the mobile number of the person: ");
+                            Records[i].MobileNumber = Console.ReadLine();
+                            Console.WriteLine("Enter the email ID of the person: ");
+                            Records[i].eMail = Console.ReadLine();
+                            Console.WriteLine("Enter the address of the person");
+                            Records[i].address = Console.ReadLine();
+                            Console.WriteLine("Enter the ZIP code: ");
+                            Records[i].zipCode = Console.ReadLine();
+                            Console.WriteLine("Enter the state: ");
+                            Records[i].state = Console.ReadLine();
+                            Console.Clear();
+                        }
+                    }
+                }
+            }
+        }
     }
 }
